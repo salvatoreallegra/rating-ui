@@ -1,9 +1,9 @@
-import "./App.css";
+import Ratings from "./components/ratings";
 
 function App() {
   return (
     <>
-      <p>Rate your experience</p>
+      <Ratings />
     </>
   );
 }
