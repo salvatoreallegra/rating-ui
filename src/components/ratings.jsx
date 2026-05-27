@@ -3,6 +3,14 @@ import { useState } from "react";
 const Ratings = () => {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
+
+  const feedBackMessages = [
+    "Very Poor",
+    "Poor",
+    "Average",
+    "Good",
+    "Excellent",
+  ];
   return (
     <div className="rating-container">
       <h2>Rate your experience</h2>
@@ -13,12 +21,17 @@ const Ratings = () => {
             onMouseEnter={() => setHover(star)}
             onMouseLeave={() => setHover(0)}
             key={star}
-            className="star"
+            className={`star ${star <= (hover || rating) ? "active" : ""}`}
           >
             &#9733;
           </span>
         ))}
       </div>
+      {rating > 0 && (
+        <div className="feedback">
+          <p>{feedBackMessages[rating - 1]}</p>
+        </div>
+      )}
     </div>
   );
 };
