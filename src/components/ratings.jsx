@@ -3,6 +3,12 @@ import { useState } from "react";
 const Ratings = ({ heading }) => {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = () => {
+    if (rating === 0) return;
+    setSubmitted(true);
+  };
 
   const feedBackMessages = [
     "Very Poor",
@@ -32,6 +38,13 @@ const Ratings = ({ heading }) => {
           <p>{feedBackMessages[rating - 1]}</p>
         </div>
       )}
+      <button
+        className="submit-btn"
+        onClick={() => handleSubmit()}
+        disabled={rating === 0 || submitted}
+      >
+        Submit
+      </button>
     </div>
   );
 };
