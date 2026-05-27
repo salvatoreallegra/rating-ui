@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Ratings = () => {
+const Ratings = ({ heading }) => {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
 
@@ -13,7 +13,7 @@ const Ratings = () => {
   ];
   return (
     <div className="rating-container">
-      <h2>Rate your experience</h2>
+      <h2>{heading}</h2>
       <div className="stars">
         {[1, 2, 3, 4, 5].map((star) => (
           <span
