@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Modal from "./Modal";
 
 const Ratings = ({ heading }) => {
   const [rating, setRating] = useState(0);
@@ -10,6 +11,11 @@ const Ratings = ({ heading }) => {
     setSubmitted(true);
   };
 
+  const handleClose = () => {
+    setSubmitted(false);
+    setRating(0);
+  };
+
   const feedBackMessages = [
     "Very Poor",
     "Poor",
@@ -19,6 +25,7 @@ const Ratings = ({ heading }) => {
   ];
   return (
     <div className="rating-container">
+      {submitted && <Modal onClose={handleClose} />}
       <h2>{heading}</h2>
       <div className="stars">
         {[1, 2, 3, 4, 5].map((star) => (
